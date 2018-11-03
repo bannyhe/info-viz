@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Individual Project - Mu He</title>
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+        <div class="row centered">
+            <div class="ten columns offset-by-three alpha">
+                <h1>Mixed Strategy of Nash Equilibrium</h1>
+            </div>
+            <div class="ten columns offset-by-three alpha">
+                <h5 style="margin-left:18%";>Mu He - 38278876</h5>
+            </div>
+        </div>
+        <div class="row centered">
+
+            <h4>Introduction</h4>
+            <p class="desc centered" style="margin-bottom:30px;">
+          The Nash Equilibrium, named after the late mathematician <b>John Forbes Nash Jr.</b>,
+          is a proposed solution of a non-cooperative game involving two or more players, each player
+          is assumed to know the equilibrium strategies of the other players, while no one has anything
+          to gain by changing only their own strategy.
+          In game theory, multiple player has to make a decision to maximize their profit,
+          if each player has chosen a strategy, and no player can benefit by changing strategies
+          while the other players keep theirs unchanged, then the current set of strategy choices
+          and their corresponding
+          payoffs constitutes a <b>Nash Equilibrium</b>.
+          </p>
+
+        </div>
+
+        <div class="row centered">
+                <p class="desc centered">
+                  Traditionally, the most common solution in Nash Equilibrium is two pure-strategy Nash Equilibria:
+                  both choose the same thing to do.
+                  However, there is also a mixed strategy Nash Equilibrium.
+                  In order to achieve it, both players need to be indifferent between the two choices,
+                  and therefore willing to play a <b>Mixed Strategy</b>.</p>
+        </div>
+        <div class="row" style="margin-top:30px;">
+                <h4>Typical Example</h4>
+                <p>Suppose two students (A and B) need to study for math and physics exam under same limited time,
+                  in order to achieve a common goal: earning extra credit as much as possible,
+                  both players need to make decision between studying for math or physics (cooperate or not),
+                  and therefore brings about a mixed strategy. As it is shown in Table 1,
+                  extra credits will be earned only if they cooperate and study on the same subject together,
+                  else nothing will be earned. </p>
+        </div>
+        <div class="row" style="margin-top:30px;">
+            <div class="six columns offset-by-three alpha">
+              <div class="row">
+                <img src="../img/table.png" width="50%" alt="Table1">
+              </div>
+            </div>
+        </div>
+        <div class="row centered">
+                <h4>Instruction</h4>
+                <p>First, let user input the number of extra credit that both A and B will earned in Table 1.
+                  The extra credits is higher when they cooperate on studying same subject than studying different subjects by themselves.
+                  Once the user has input the data, it will be automatically applied and generate visualization in real time, which is shown from Chart 1 to 3.
+                  In the first two charts, the line shows the payoff trend when a student rises the probability of studying math.
+                  The two smaller dots with dashed line below refers to the current possibility of studying for math exam, which is draggable horizontally.
+                  As long as the probability of studying math changes in one chart, the trending line in the other chart will be re-generated.</p>
+          </div>
+
+          <div class="row" style="margin-top:20px;">
+            <div class="ten columns offset-by-one alpha">
+                <div class="one-third column" id="divchart1">
+                    <h6><center>Chart 1</center></h6>
+                </div>
+                <div class="one-third column" id="divchart2">
+                    <h6><center>Chart 2</center></h6>
+                </div>
+                <div class="one-third column" id="divchart3">
+                    <h6><center>Chart 3</center></h6>
+                </div>
+            </div>
+            <div class="ten columns offset-by-one alpha">
+                <div class="one-third column question" id="chart1"><svg id="one"/></div>
+                <div class="one-third column question" id="chart2"><svg id="two"/></div>
+                <div class="one-third column question" id="chart3"><svg id="three"/></div>
+            </div>
+        </div>
+        <div class="row centered">
+            <div class='chart'>
+              <h5>Now tweak the sliders below and see what happens!</h5>
+              <form>
+                <fieldset>
+                  <p>Probability A Study Math</p>
+                  <input id=b type=range min=0 max=1 step=0.1 oninput='[draw1(),draw3()]' value=0.6 />
+                  <output />
+                </fieldset>
+                <fieldset>
+                  <p>Probability B Study Math</p>
+                  <input id=a type=range min=0 max=1 step=0.1 oninput='[draw2(),draw3()]' value=0.2 />
+                  <output />
+                </fieldset>
+              </form>
+            </div>
+        </div>
+        <div class="row centered">
+                <p class="desc centered">Simultaneously, the expected value of A and B to study either math or physics
+                changes according to the value of slider as well:</p>
+        </div>
+        <div class="row">
+        <div class="ten columns offset-by-one alpha">
+              <div class="one-half column">
+                  <h6><center>Student A</center></h6>
+              </div>
+              <div class="one-half column">
+                  <h6><center>Student B</center></h6>
+              </div>
+          </div>
+          <div class="ten columns offset-by-one alpha">
+            <div class="one-half column question" >
+              <div style="display:flex">
+                <div margin="0 0 10px 0">
+                  <p id="t1"></p>
+                </div>
+              </div>
+              <div class=" "style="display:flex">
+                <div margin="0 10px 0 0">
+                  <p id="t2"></p>
+                </div>
+              </div>
+            </div>
+            <div class="one-half column question">
+                <div style="display:flex">
+                  <div margin="0 10px 0 0">
+                    <p id="t3"></p>
+                  </div>
+              </div>
+                <div style="display:flex">
+                  <div margin="0 10px 0 0">
+                    <p id="t4"></p>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row centered">
+            <h4>Expected Value</h4>
+                <p>According to its definition, the expected value of a discrete random variable is the probability-weighted average of all possible values.
+                  In other words, each possible value the random variable can assume is multiplied by its probability of occurring,
+                  and the resulting products are summed to produce the expected value.</p>
+
+                <p>In finite case, let X be a random variable with a finite number of finite outcomes X1, X2, X3, ..., ...Xn
+                  occurring with probabilities with P1, P2, P3, ..., ..., pn, respectively. The expected value of X is defined as:<p/>
+                <h6><center><b>E(X) = X1P1 + X2P2 + X3P3 + ... + XnPn</b></center></h6>
+                <p>Thus, the expected value of student A and B for studying either math or physics will be calculated in real time,
+                  base on the given value in Table 1.</p>
+        </div>
+        <div class="row centered">
+          <h4>Summary</h4>
+                <p>As it is depicted in Chart 3, the dashed line refers to the current probability of A studying math,
+                  whereas the solid lines stands for expected values for both students' probability,
+                  and the intersection point (yellow dot) is the equilibrium point for the best response.</p>
+                <p>Once the expected value of student A for studying math equals to that of studying physics,
+                  and student B for studying math equals to that of studying physics as well,
+                  it will reach to the equilibrium point that will produce the most profitable outcome for both students,
+                  which is the best win-win solution (shown in the charts below).</p>
+        </div>
+        <div class="row" style="margin-top:20px;">
+          <div class="ten columns offset-by-one alpha">
+              <div class="one-half column question" >
+                <div style="display:flex">
+                  <div margin="0 10px 0 0">
+                    <p>E(A)math </p>
+                  </div>
+                  <div margin="0 0 0 19px">
+                    <p> =	b &#215; 3 + (1-b) &#215; 0</p>
+                    <p>= 0.4 &#215; 3 + 0.6 &#215; 0 </p>
+                    <p>= 1.2 </p>
+                  </div>
+                </div>
+                <div class=" "style="display:flex">
+                  <div margin="0 10px 0 0">
+                    <p>E(A)physics </p>
+                  </div>
+                  <div margin="0 0 0 19px">
+                    <p> =	b &#215; 0 + (1-b) &#215; 2</p>
+                    <p margin="0 0 0 19px">= 0.4 &#215; 0 + 0.6 &#215; 2 </p>
+                    <p>= 1.2 </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="one-half column question">
+                  <div style="display:flex">
+                    <div margin="0 10px 0 0">
+                      <p>E(B)math </p>
+                    </div>
+                  <div margin="0 0 0 19px">
+                    <p>=	a &#215; 1 + (1-a) &#215; 0</p>
+                    <p>= 0.8 &#215; 1 + 0.2 &#215; 0 </p>
+                    <p>= 0.8 </p>
+                  </div>
+                </div>
+                  <div style="display:flex">
+                    <div margin="0 10px 0 0">
+                      <p>E(B)physics </p>
+                    </div>
+                  <div margin="0 0 0 19px">
+                    <p> =	a &#215; 0 + (1-a) &#215; 4</p>
+                    <p>= 0.8 &#215; 0 + 0.2 &#215; 4 </p>
+                    <p>= 0.8 </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+        <div class="row centered">
+            <h4>References</h4>
+              <ul class="desc centered" style="margin-bottom:30px;">
+                <li><a href="http://www.econgraphs.org/" target="_blank">http://www.econgraphs.org/</a></li>
+                <li><a href="http://www.gametheory.net/applets/prisoners.html" target="_blank">http://www.gametheory.net/applets/prisoners.html</a></li>
+                <li><a href="https://boingboing.net/2017/07/26/fun-interactive-game-theory-si.html" target="_blank">https://boingboing.net/2017/07/26/fun-interactive-game-theory-si.html</a></li>
+                <li><a href="https://www.idmarketingtools.com/iteratedPrisonersDilemma" target="_blank">https://www.idmarketingtools.com/iteratedPrisonersDilemma</a></li>
+                <li><a href="https://www.economicsnetwork.ac.uk/archive/poulter/pd_refs.htm" target="_blank">https://www.economicsnetwork.ac.uk/archive/poulter/pd_refs.htm</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Nash_equilibrium" target="_blank">https://en.wikipedia.org/wiki/Nash_equilibrium</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Expected_value" target="_blank">https://en.wikipedia.org/wiki/Expected_value</a></li>
+              </ul>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="js/draw.js"></script>
+</html>
